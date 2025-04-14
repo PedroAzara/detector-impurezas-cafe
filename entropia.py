@@ -2,6 +2,9 @@ import cv2
 import numpy as np
 import os
 import matplotlib.pyplot as plt
+from skimage.io import imread
+from skimage.color import rgb2gray  # caso a imagem esteja em RGB
+from skimage.measure import shannon_entropy
 
 # Caminho da pasta com as imagens
 pasta = r"C:\Users\pedro\OneDrive\Documentos\projetos\imagens\imagens-separadas\1T\02-04-25"
@@ -14,17 +17,17 @@ for nome_arquivo in os.listdir(pasta):
     if nome_arquivo.endswith((".png", ".jpg", ".jpeg")):
         caminho = os.path.join(pasta, nome_arquivo)
         imagem = cv2.imread(caminho, cv2.IMREAD_GRAYSCALE)
-        intensidade = np.mean(imagem)
+        entropia = shannon_entropy(imagem)
 
         # Adiciona a intensidade à lista correspondente
         if "cafe_Luisa" in nome_arquivo:
-            intensidades["cafe_Luisa"].append(intensidade)
+            intensidades["cafe_Luisa"].append(entropia)
         elif "cafe_" in nome_arquivo.lower():
-            intensidades["cafe_padrao"].append(intensidade)
+            intensidades["cafe_padrao"].append(entropia)
         elif "milho1" in nome_arquivo.lower():
-            intensidades["milho1"].append(intensidade)
+            intensidades["milho1"].append(entropia)
         elif "milho3" in nome_arquivo.lower():
-            intensidades["milho3"].append(intensidade)
+            intensidades["milho3"].append(entropia)
 
 
 # Plotar gráfico de comparação
@@ -33,9 +36,9 @@ plt.plot(intensidades["cafe_padrao"], 'o-', label='Café Padrão')
 plt.plot(intensidades["milho3"], 's-', label='Milho 3')
 plt.plot(intensidades["cafe_Luisa"], 'o-', label='Café Luisa')
 plt.plot(intensidades["milho1"], 's-', label='Milho 1')
-plt.title("Intensidade média das imagens 02-04-25")
+plt.title("Entropia de Shannon das imagens 02-04-25")
 plt.xlabel("Amostra")
-plt.ylabel("Intensidade média (0-255)")
+plt.ylabel("Entropia de Shannon")
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
@@ -44,7 +47,7 @@ pasta_resultados = r"C:\Users\pedro\OneDrive\Documentos\projetos\resultados"
 os.makedirs(pasta_resultados, exist_ok=True)
 
 # Salvar o gráfico na pasta "resultados"
-caminho_grafico = os.path.join(pasta_resultados, "intensidade_comparacao_02-04-25.png")
+caminho_grafico = os.path.join(pasta_resultados, "shannon_entropy_02-04-25.png")
 plt.savefig(caminho_grafico)
 print(f"Gráfico salvo em: {caminho_grafico}")
 plt.show()

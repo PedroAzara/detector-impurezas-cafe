@@ -1,6 +1,7 @@
 import shutil
 import os
 
+
 def copy_image(source_path, destination_folder):
     # Ensure the source file exists
     if not os.path.isfile(source_path):
@@ -22,12 +23,14 @@ def copy_image(source_path, destination_folder):
     print(f"File '{file_name}' has been copied to '{destination_folder}'.")
 
 # Example usage
-
-
-for i in range(1, 9):  # exemplo para cafe_1_1T.png até cafe_3_1T.png
-    filename = f"milho_{i}_1T.png"
-    source_image = rf"C:\Users\pedro\OneDrive\Documentos\projetos\imagens\imagens-cafe-png\01-04-25\{filename}"
-    destination_dir = r"C:\Users\pedro\OneDrive\Documentos\projetos\imagens\imagens-separadas\1T\01-04-25"  # Replace with the destination folder
+#Digite aqui qual tonelada de café você quer separar
+# 1, 4, 7
+t=4
+d = 2  # dia 1 ou 2
+for i in range(1, 15):  # exemplo para cafe_1_1T.png até cafe_3_1T.png
+    filename = f"cafe_Luisa_{i}_{t}T.png"
+    source_image = rf"C:\Users\pedro\OneDrive\Documentos\projetos\imagens\imagens-cafe-png\0{d}-04-25\{filename}"
+    destination_dir = rf"C:\Users\pedro\OneDrive\Documentos\projetos\imagens\imagens-separadas\{t}T\0{d}-04-25"  # Replace with the destination folder
     copy_image(source_image, destination_dir)   
     print(source_image)
 
