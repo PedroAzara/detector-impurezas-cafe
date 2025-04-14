@@ -3,8 +3,10 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 
+# Digite aqui qual tonelada de café você quer rodar o script
+t = 7
 # Caminho da pasta com as imagens
-pasta = r"C:\Users\pedro\OneDrive\Documentos\projetos\imagens\imagens-separadas\1T\02-04-25"
+pasta = rf"C:\Users\pedro\OneDrive\Documentos\projetos\imagens\imagens-separadas\{t}T\02-04-25"
 
 # Dicionário para armazenar intensidades
 intensidades = {"cafe_padrao": [], "cafe_Luisa": [],"milho1":[], "milho3": []}
@@ -44,7 +46,7 @@ pasta_resultados = r"C:\Users\pedro\OneDrive\Documentos\projetos\resultados"
 os.makedirs(pasta_resultados, exist_ok=True)
 
 # Salvar o gráfico na pasta "resultados"
-caminho_grafico = os.path.join(pasta_resultados, "intensidade_comparacao_02-04-25.png")
+caminho_grafico = os.path.join(pasta_resultados, f"intensidade_comparacao_02-04-25_{t}T.png")
 plt.savefig(caminho_grafico)
 print(f"Gráfico salvo em: {caminho_grafico}")
 plt.show()
