@@ -160,9 +160,9 @@ def convert_tif_to_png(input_folder, output_folder):
 
 
 
-pasta_contendo_os_tiffs = r"/home/pedro/Documentos/detector-cafe/detector-impurezas-cafe/drive-download-20250504T150856Z-1-001/02-04-25"
+pasta_contendo_os_tiffs = r"/home/pedro-henrique/Documentos/detector-cafe/detector-impurezas-cafe/imagens/imagens-02-04-25-tif"
 # Exemplo: pasta_contendo_os_tiffs = r"C:\Users\SeuUsuario\Imagens\TIFs"
-pasta_onde_salvar_os_pngs = r"/home/pedro/Documentos/detector-cafe/detector-impurezas-cafe/imagens/02-04-25"
+pasta_onde_salvar_os_pngs = r"/home/pedro-henrique/Documentos/detector-cafe/detector-impurezas-cafe/imagens/imagens-02-04-25-png"
 # Exemplo: pasta_onde_salvar_os_pngs = r"C:\Users\SeuUsuario\Imagens\PNGs"
 
 # --- EXECUÇÃO ---
